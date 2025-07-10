@@ -341,6 +341,17 @@
         "roleId": 0
       },
       "id": "ypz26dF"
+    },
+    {
+      "hash": "0.21648732587664731852328259265050292015075683593750",
+      "user": {
+        "id": "001",
+        "login": "maxim",
+        "password": "qwerty123",
+        "registeredAt": "2030-09-25",
+        "roleId": 0
+      },
+      "id": "BITPvBu"
     }
   ]
 }
