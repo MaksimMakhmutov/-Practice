@@ -32,7 +32,7 @@ async function login(login, password) {
     throw new Error("Wrong password");
   }
 
-  const token = generate({ id: user.ud });
+  const token = generate({ id: user.id });
 
   return { token, user };
 }
@@ -57,7 +57,7 @@ function deleteUser(id) {
 
 //edit (roles)
 
-function updateUser(userData) {
+function updateUser(id, userData) {
   return User.findByIdAndUpdate(id, userData, { returnDocument: "after" });
 }
 

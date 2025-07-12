@@ -1,5 +1,4 @@
 const mongoose = require("mongoose");
-const roles = require("../constants/roles");
 const validator = require("validator");
 
 const PostSchema = mongoose.Schema(
@@ -13,14 +12,14 @@ const PostSchema = mongoose.Schema(
       required: true,
       validate: {
         validator: validator.isURL,
-        massage: "Image should ba a valid url",
+        message: "Image should be a valid url",
       },
     },
     content: {
       type: String,
       required: true,
     },
-    commets: [
+    comments: [
       {
         type: mongoose.Schema.Types.ObjectId,
         ref: "Comment",
