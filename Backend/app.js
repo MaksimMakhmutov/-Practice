@@ -86,7 +86,6 @@ app.post("/posts/:id/comments", async (req, res) => {
 
   res.send({ data: mapComment(newComment) });
 });
-
 app.delete(
   "/posts/:postId/comments/:commentId",
   hasRole([ROLES.ADMIN, ROLES.MODERATOR]),

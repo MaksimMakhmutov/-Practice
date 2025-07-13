@@ -1,23 +1,21 @@
 import PropTypes from 'prop-types';
-import styled from 'styled-components';
-import { Icon } from '../../../../../components';
 import { useDispatch, useSelector } from 'react-redux';
-import { CLOSE_MODAL, openModal, removeCommentAsync } from '../../../../../actions';
-import { useServerRequest } from '../../../../../hooks';
-import { selectUserRole } from '../../../../../selectors';
-import { ROLE } from '../../../../../constants';
+import { Icon } from '../../../../../../components';
+import { openModal, CLOSE_MODAL, removeCommentAsync } from '../../../../../../actions';
+import { selectUserRole } from '../../../../../../selectors';
+import { ROLE } from '../../../../../../constants';
+import styled from 'styled-components';
 
-const CommentContainer = ({ postId, id, author, content, publishedAt, className }) => {
+const CommentComtainer = ({ className, postId, id, author, publishedAt, content }) => {
 	const dispatch = useDispatch();
 	const userRole = useSelector(selectUserRole);
-	const requestServer = useServerRequest();
 
 	const onCommentRemove = (id) => {
 		dispatch(
 			openModal({
-				text: 'Удалить коментарий?',
+				text: 'Удалить комментарий?',
 				onConfirm: () => {
-					dispatch(removeCommentAsync(requestServer, postId, id));
+					dispatch(removeCommentAsync(postId, id));
 					dispatch(CLOSE_MODAL);
 				},
 				onCancel: () => dispatch(CLOSE_MODAL),
@@ -34,14 +32,21 @@ const CommentContainer = ({ postId, id, author, content, publishedAt, className 
 					<div className="author">
 						<Icon
 							inactive={true}
-							iconId="fa-user-circle-o"
-							margin="0 10px 0 0"
+							id="fa-user-circle-o"
 							size="18px"
+							margin="0 10px 0 0"
+							onClick={() => {}}
 						/>
 						{author}
 					</div>
 					<div className="published-at">
-						<Icon iconId="fa-calendar-o" margin="0 10px 0 0" size="18px" />
+						<Icon
+							inactive={true}
+							id="fa-calendar-o"
+							size="18px"
+							margin="0 10px 0 0"
+							onClick={() => {}}
+						/>
 						{publishedAt}
 					</div>
 				</div>
@@ -49,9 +54,9 @@ const CommentContainer = ({ postId, id, author, content, publishedAt, className 
 			</div>
 			{isAdminOrModerator && (
 				<Icon
-					iconId="fa-trash-o"
-					margin="0 0 0 10px"
+					id="fa-trash-o"
 					size="21px"
+					margin="0 0 0 10px"
 					onClick={() => onCommentRemove(id)}
 				/>
 			)}
@@ -59,13 +64,14 @@ const CommentContainer = ({ postId, id, author, content, publishedAt, className 
 	);
 };
 
-export const Comment = styled(CommentContainer)`
+export const Comment = styled(CommentComtainer)`
 	display: flex;
+	width: 100%;
 	margin-top: 10px;
 
 	& .comment {
-		padding: 5px 10px;
 		width: 550px;
+		padding: 5px 10px;
 		border: 1px solid #000;
 	}
 
@@ -73,10 +79,20 @@ export const Comment = styled(CommentContainer)`
 		display: flex;
 		justify-content: space-between;
 	}
-	& .autor {
+
+	& .author {
 		display: flex;
 	}
+
 	& .published-at {
 		display: flex;
 	}
 `;
+
+Comment.propTypes = {
+	postId: PropTypes.string.isRequired,
+	id: PropTypes.number.isRequired,
+	author: PropTypes.string.isRequired,
+	content: PropTypes.string.isRequired,
+	publishedAt: PropTypes.string.isRequired,
+};

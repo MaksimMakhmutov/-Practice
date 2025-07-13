@@ -3,7 +3,6 @@ import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 import { useMatch, useParams } from 'react-router-dom';
-import { useServerRequest } from '../../hooks';
 import { selectPost } from '../../selectors';
 import { PostForm } from './components/post-form/post-form';
 import { loadPostAsync, RESET_POST_DATA } from '../../actions';
@@ -18,7 +17,6 @@ const PostContainer = ({ className }) => {
 	const post = useSelector(selectPost);
 	const [error, setError] = useState(null);
 	const [isLoading, setIsLoading] = useState(true);
-	const requestServer = useServerRequest();
 
 	useLayoutEffect(() => {
 		dispatch(RESET_POST_DATA);
@@ -29,11 +27,11 @@ const PostContainer = ({ className }) => {
 			setIsLoading(false);
 			return;
 		}
-		dispatch(loadPostAsync(requestServer, params.id)).then((postData) => {
+		dispatch(loadPostAsync(params.id)).then((postData) => {
 			setError(postData.error);
 			setIsLoading(false);
 		});
-	}, [requestServer, dispatch, isCreating, params.id]);
+	}, [dispatch, isCreating, params.id]);
 
 	if (isLoading) {
 		return null;

@@ -6,13 +6,12 @@ import { sanitizeContent } from './utils';
 import { useDispatch } from 'react-redux';
 import { savePostAsync } from '../../../../actions';
 import { useNavigate } from 'react-router-dom';
-import { useServerRequest } from '../../../../hooks';
 import { PROP_TYPE } from '../../../../constants';
 const PostFormContainer = ({
 	className,
 	post: { id, title, imageUrl, content, publishedAt },
 }) => {
-	const requestServer = useServerRequest();
+
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 
@@ -29,8 +28,7 @@ const PostFormContainer = ({
 		const newContent = sanitizeContent(contentRef.current.innerHTML);
 
 		dispatch(
-			savePostAsync(requestServer, {
-				id,
+			savePostAsync(id, {
 				imageUrl: imageUrlValue,
 				title: titleValue,
 				content: newContent,
