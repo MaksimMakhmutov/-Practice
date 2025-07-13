@@ -6,7 +6,7 @@ import { useLayoutEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUser } from './actions';
 import { Modal } from './components/modal/modal';
-import { ERROR } from './bff/constants';
+import { ERROR } from './constants';
 
 const Page = styled.div`
 	padding: 120px 0;

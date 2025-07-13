@@ -1,9 +1,10 @@
-import { server } from '../bff';
-import { ACTION_TYPE } from './acton-type';
+import { request } from '../utils/request';
+import { ACTION_TYPE } from './action-type';
 
-export const logout = (session) => async (dispatch) => {
-    await server.logout(session);
-    dispatch({
-        type: ACTION_TYPE.LOGOUT,
-    });
+export const logout = () => {
+	request('/logout', 'POST');
+
+	return {
+		type: ACTION_TYPE.LOGOUT,
+	};
 };

@@ -5,7 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { CLOSE_MODAL, openModal, removeCommentAsync } from '../../../../../actions';
 import { useServerRequest } from '../../../../../hooks';
 import { selectUserRole } from '../../../../../selectors';
-import { ROLE } from '../../../../../bff/constants';
+import { ROLE } from '../../../../../constants';
 
 const CommentContainer = ({ postId, id, author, content, publishedAt, className }) => {
 	const dispatch = useDispatch();

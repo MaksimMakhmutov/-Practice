@@ -2,7 +2,7 @@ import { PrivateContent, H2 } from '../../components';
 import { TableRow, UserRow } from './components/index';
 import { useServerRequest } from '../../hooks';
 import { useEffect, useState } from 'react';
-import { ROLE } from '../../bff/constants';
+import { ROLE } from '../../constants';
 import styled from 'styled-components';
 import { checkAccess } from '../../utils';
 import { useSelector } from 'react-redux';

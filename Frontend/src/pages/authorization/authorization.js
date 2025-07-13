@@ -4,13 +4,13 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { Link, Navigate } from 'react-router-dom';
-import { server } from '../../bff';
 import { AuthFormError, Button, Input, H2 } from '../../components';
 import { useResetForm } from '../../hooks';
 import styled from 'styled-components';
 import { setUser } from '../../actions';
 import { selectUserRole } from '../../selectors';
-import { ROLE } from '../../bff/constants';
+import { ROLE } from '../../constants';
+import { request } from '../../utils';
 
 const authFromSchema = yup.object().shape({
 	login: yup
@@ -55,14 +55,16 @@ const AuthorizationContainer = ({ className }) => {
 
 	useResetForm(reset);
 
-	const onSubmit = async ({ login, password }) => {
-		const { error, res } = await server.authorize(login, password);
-		if (error) {
-			setServerError(`Ошибка запроса: ${error}`);
-			return;
-		}
-		dispatch(setUser(res));
-		sessionStorage.setItem('userData', JSON.stringify(res));
+	const onSubmit = ({ login, password }) => {
+		request('/login', 'POST', { login, password }).then(({ error, user }) => {
+			if (error) {
+				setServerError(`Ошибка запроса: ${error}`);
+				return;
+			}
+
+			dispatch(setUser(user));
+			sessionStorage.setItem('userData', JSON.stringify(user));
+		});
 	};
 
 	const formError = errors?.login?.message || errors?.password?.message;

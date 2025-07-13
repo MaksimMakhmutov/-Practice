@@ -4,7 +4,7 @@ import { Icon } from '../../../../components';
 import { TableRow } from '../table-row/table-row';
 import { useState } from 'react';
 import { useServerRequest } from '../../../../hooks';
-import { PROP_TYPE } from '../../../../bff/constants';
+import { PROP_TYPE } from '../../../../constants';
 const UserRowContainer = ({
 	className,
 	id,

@@ -7,7 +7,7 @@ import { useDispatch } from 'react-redux';
 import { savePostAsync } from '../../../../actions';
 import { useNavigate } from 'react-router-dom';
 import { useServerRequest } from '../../../../hooks';
-import { PROP_TYPE } from '../../../../bff/constants';
+import { PROP_TYPE } from '../../../../constants';
 const PostFormContainer = ({
 	className,
 	post: { id, title, imageUrl, content, publishedAt },

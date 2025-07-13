@@ -1,4 +1,4 @@
-export * from './acton-type';
+export * from './action-type';
 export * from './set-user';
 export * from './logout';
 export * from './set-post-data';
@@ -10,4 +10,4 @@ export * from './close-modal';
 export * from './save-post-async';
 export * from './remove-post-async';
 export * from './reset-post-data';
-export * from './load-post-async'
+export * from './load-post-async';

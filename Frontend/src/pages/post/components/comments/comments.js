@@ -7,7 +7,7 @@ import { useServerRequest } from '../../../../hooks';
 import { useDispatch, useSelector } from 'react-redux';
 import { selectUserId, selectUserRole } from '../../../../selectors';
 import { addCommentAsync } from '../../../../actions/add-comment-async';
-import { PROP_TYPE, ROLE } from '../../../../bff/constants';
+import { PROP_TYPE, ROLE } from '../../../../constants';
 
 const CommetsContainer = ({ className, comments, postId }) => {
 	const [newComment, setNewComment] = useState('');

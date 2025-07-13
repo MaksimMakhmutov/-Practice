@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { H2, Icon } from '../../../../components';
 import { SpecialPanel } from '../special-panel/special-panel';
 import { useNavigate } from 'react-router-dom';
-import { PROP_TYPE } from '../../../../bff/constants';
+import { PROP_TYPE } from '../../../../constants';
 
 const PostContantContainer = ({
 	className,

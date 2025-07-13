@@ -1,7 +1,6 @@
-
 import styled from 'styled-components';
 import { H2 } from '../h2/h2';
-import { PROP_TYPE } from '../../bff/constants';
+import { PROP_TYPE } from '../../constants';
 
 export const Error = ({ error }) =>
 	error && (

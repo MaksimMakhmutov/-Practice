@@ -1,6 +1,6 @@
 import { deleteComment, deletePost, getComments } from '../api';
 
-import { ROLE } from '../constants';
+import { ROLE } from '../../constants';
 import { sessions } from '../sessions';
 
 export const removePost = async (hash, id) => {

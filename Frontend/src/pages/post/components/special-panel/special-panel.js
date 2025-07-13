@@ -6,7 +6,7 @@ import { useServerRequest } from '../../../../hooks';
 import { CLOSE_MODAL, openModal, removePostAsync } from '../../../../actions';
 import { useNavigate } from 'react-router-dom';
 import { checkAccess } from '../../../../utils';
-import { ROLE } from '../../../../bff/constants';
+import { ROLE } from '../../../../constants';
 import { selectUserRole } from '../../../../selectors';
 
 const SpecialPanelContainer = ({ className, id, publishedAt, editButton }) => {

@@ -1,4 +1,3 @@
-
 import { Comments, PostContent } from './components';
 import { useEffect, useLayoutEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -9,7 +8,7 @@ import { selectPost } from '../../selectors';
 import { PostForm } from './components/post-form/post-form';
 import { loadPostAsync, RESET_POST_DATA } from '../../actions';
 import { Error, PrivateContent } from '../../components';
-import { ROLE } from '../../bff/constants';
+import { ROLE } from '../../constants';
 
 const PostContainer = ({ className }) => {
 	const params = useParams();
